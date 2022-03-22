@@ -1,2 +1,9 @@
-# exadel-final-project
-Build CI/CD process with wagtail application
+# Exadel final DevOps project
+
+🔥 Build CI/CD process with wagtail application
+
+---
+
+
+
+---
