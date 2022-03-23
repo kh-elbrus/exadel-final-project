@@ -20,4 +20,4 @@
 
 ## Wiki 
 
-👉 [Checkout our wiki!](https://github.com/kh-elbrus/exadel-final-project/wiki)
+👉 [Check out our wiki!](https://github.com/kh-elbrus/exadel-final-project/wiki)
