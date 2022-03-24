@@ -16,7 +16,7 @@
 
 ## Summary
 
-- Short and informative text about our goals and achievements
+- // TODO: Short and informative text about our goals and achievements
 
 ## Wiki 
 
