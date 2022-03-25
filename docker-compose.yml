@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+    web:
+        restart: always
+        build: ./app
+        expose:
+            - "8000"
+        volumes:
+            - ./app:/app
+            - static_volume:/vol/web/static
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_HOST=${POSTGRES_HOST}
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        links:
+            - postgres:postgres
+        depends_on:
+            - postgres
+        command: >
+            sh -c "python manage.py migrate &&
+                   python manage.py collectstatic &&
+                   gunicorn app.wsgi:application --reload -w 2 -b :8000"
+    nginx:
+        restart: always
+        build: ./nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - static_volume:/static
+        volumes_from:
+            - web
+        links:
+            - web:web
+        depends_on:
+            - web
+    postgres:
+        restart: always
+        image: postgres:latest
+        volumes:
+            - ./db_backup:/db_backup
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        ports:
+            - "5432:5432"
+
+volumes:
+    static_volume:
