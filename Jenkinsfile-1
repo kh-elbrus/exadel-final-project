@@ -1,5 +1,8 @@
 pipeline {
-  agent { label 'agent-1' }
+  agent { 
+      label 'agent-1'
+      args '-u root:sudo'
+  }
 
   stages {
     stage('Setupping ENV file') {
