@@ -1,0 +1,31 @@
+pipeline {
+  agent { label 'agent-1' }
+  }
+  withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENV_FILE')]){
+    writeFile (file: ".env", text: readFile(ENV_FILE))
+  }
+  stages {
+    stage('Check docker & docker compose versions') {
+      steps {
+          sh '''
+            docker --version 
+            docker-compose --version
+          '''
+      }
+    }
+    stage('Build docker image') {
+      steps {
+        sh 'docker-compose bulld -t elbrus/exadel-final-project'
+      }
+    }
+    stage('Running docker container') {
+        steps {
+            sh 'docker-compose up -d'
+        }
+    }
+    stage('Testing Web App') {
+        steps {
+            sh 'curl https://0.0.0.0 -k'
+        }
+    }
+}
