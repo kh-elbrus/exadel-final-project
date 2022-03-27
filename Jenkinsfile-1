@@ -1,6 +1,6 @@
 pipeline {
   agent { label 'agent-1' }
-  }
+
   withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENV_FILE')]){
     writeFile (file: ".env", text: readFile(ENV_FILE))
   }
@@ -28,4 +28,5 @@ pipeline {
             sh 'curl https://0.0.0.0 -k'
         }
     }
+  }
 }
