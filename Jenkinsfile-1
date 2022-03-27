@@ -1,7 +1,7 @@
 pipeline {
-  agent { 
-      label 'agent-1'
-      args '-u root:sudo'
+  agent {
+    label 'agent-1'
+    args '-u root:sudo'
   }
 
   stages {
