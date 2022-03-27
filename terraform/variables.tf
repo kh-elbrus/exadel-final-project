@@ -42,6 +42,12 @@ variable "centos-monitoring-tags" {
   })
 }
 
+variable "ubuntu-jenkins-agent-tags" {
+  type = object({
+    Name = string
+  })
+}
+
 variable "main-vpc-tags" {
   type = object({
     Name = string
@@ -79,6 +85,12 @@ variable "allow-traffic-to-centos-jenkins-tags" {
 }
 
 variable "allow-traffic-to-centos-monitoring-tags" {
+  type = object({
+    Name = string
+  })
+}
+
+variable "allow-traffic-to-ubuntu-jenkins-agent-tags" {
   type = object({
     Name = string
   })
