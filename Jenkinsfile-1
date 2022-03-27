@@ -1,5 +1,7 @@
 pipeline {
-  agent { label 'agent-1' }
+  agent {
+    label 'agent-1'
+  }
 
   stages {
     stage('Setupping ENV file') {
@@ -21,7 +23,7 @@ pipeline {
     }
     stage('Build docker image') {
       steps {
-        sh 'docker-compose bulld -t elbrus/exadel-final-project'
+        sh 'docker-compose build -t elbrus/exadel-final-project'
       }
     }
     stage('Running docker container') {
@@ -31,7 +33,8 @@ pipeline {
     }
     stage('Testing Web App') {
         steps {
-            sh 'curl https://0.0.0.0 -k'
+            sh 'sleep 20'
+            sh 'curl -I https://0.0.0.0 -k'
         }
     }
   }
