@@ -60,3 +60,12 @@ resource "aws_security_group_rule" "in_to_web_panel_monitoring" {
   security_group_id = aws_security_group.allow_traffic_to_centos_monitoring.id
 }
 
+resource "aws_security_group_rule" "in_to_web_panel_prom" {
+  type = "ingress"
+  from_port = 9090
+  to_port = 9090
+  protocol = "tcp"
+  cidr_blocks = [aws_vpc.mvpc.cidr_block]
+
+  security_group_id = aws_security_group.allow_traffic_to_centos_monitoring.id
+}
