@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Build docker image') {
       steps {
-        sh 'docker-compose bulld -t elbrus/exadel-final-project'
+        sh 'docker-compose build -t elbrus/exadel-final-project'
       }
     }
     stage('Running docker container') {
