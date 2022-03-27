@@ -22,9 +22,9 @@ resource "aws_security_group_rule" "out_to_world_jenkins_agent" {
 
 resource "aws_security_group_rule" "in_to_all_jenkins_agent" {
   type = "ingress"
-  from_port = -1
-  to_port = -1
-  protocol = "-1"
+  from_port = 22
+  to_port = 22
+  protocol = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
   
   security_group_id = aws_security_group.allow_traffic_to_ubuntu_jenkins_agent.id

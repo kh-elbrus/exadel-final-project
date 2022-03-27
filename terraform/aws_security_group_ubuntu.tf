@@ -50,3 +50,12 @@ resource "aws_security_group_rule" "in_to_https_ubuntu" {
   security_group_id = aws_security_group.allow_traffic_to_ubuntu.id
 }
 
+resource "aws_security_group_rule" "in_to_https_ubuntu_prom" {
+  type = "ingress"
+  from_port = 9090
+  to_port = 9090
+  protocol = "tcp"
+  cidr_blocks = [aws_vpc.mvpc.cidr_block]
+
+  security_group_id = aws_security_group.allow_traffic_to_ubuntu.id
+}

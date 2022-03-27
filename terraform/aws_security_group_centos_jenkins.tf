@@ -65,7 +65,17 @@ resource "aws_security_group_rule" "in_to_master_jenkins" {
   from_port = 50000
   to_port = 50000
   protocol = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = [aws_vpc.mvpc.cidr_block]
+
+  security_group_id = aws_security_group.allow_traffic_to_centos_jenkins.id
+}
+
+resource "aws_security_group_rule" "in_to_master_jenkins_prom" {
+  type = "ingress"
+  from_port = 9090
+  to_port = 9090
+  protocol = "tcp"
+  cidr_blocks = [aws_vpc.mvpc.cidr_block]
 
   security_group_id = aws_security_group.allow_traffic_to_centos_jenkins.id
 }
