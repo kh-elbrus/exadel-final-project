@@ -2,7 +2,7 @@ pipeline {
   agent { label 'agent-1' }
 
   withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENV_FILE')]){
-    writeFile (file: ".env", text: readFile(ENV_FILE))
+    writeFile(file: ".env", text: readFile(ENV_FILE))
   }
   stages {
     stage('Check docker & docker compose versions') {
