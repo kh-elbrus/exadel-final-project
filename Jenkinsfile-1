@@ -3,9 +3,11 @@ pipeline {
 
   stages {
     stage('Setupping ENV file') {
-        script {
-          withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENV_FILE')]){
-            writeFile(file: ".env", text: readFile(ENV_FILE))
+        steps{
+          script {
+            withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENV_FILE')]){
+              writeFile(file: ".env", text: readFile(ENV_FILE))
+            }
           }
         }
     }
