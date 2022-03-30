@@ -54,11 +54,12 @@ pipeline {
     stage('Deploying to k8s') {
         steps {
            script {
-               kubernetesDeploy(
-                   configs: './k8s/deployment.yml',
-                   kubeconfigId: 'AKS_CONFIG',
-               )
-           }
+                kubernetesDeploy(
+                    configs: './k8s/deployment.yml',
+                    kubeconfigId: 'AKS_CONFIG',
+                    enableConfigSubstitution: true
+                )
+            }
         }
     }
   }
