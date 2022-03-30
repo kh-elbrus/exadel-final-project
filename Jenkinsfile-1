@@ -51,6 +51,16 @@ pipeline {
             sh 'docker-compose push'
         }
     }
+    stage('Deploying to k8s') {
+        steps {
+           script {
+               kubernetesDeploy(
+                   configs: 'deployment.yml',
+                   kubeconfigId: 'AKS_CONFIG',
+               )
+           }
+        }
+    }
   }
   post {
     always {
