@@ -28,7 +28,7 @@ services:
     nginx:
         restart: always
         build: ./nginx
-        image: nginx
+        image: elbrus/nginx
         ports:
             - "80:80"
             - "443:443"
