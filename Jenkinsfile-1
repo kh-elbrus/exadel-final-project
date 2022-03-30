@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Build docker image') {
       steps {
-        sh 'docker-compose build -t elbrus/exadel-final-project --pull'
+        sh 'docker-compose build -t elbrus/exadel-final-project'
       }
     }
     stage('Running docker container') {
@@ -48,7 +48,7 @@ pipeline {
     }
     stage('Pushing to DockerHub') {
         steps {
-            sh 'docker-compose push'
+            sh 'docker-compose images | while read i ; do docker push elbrus/$i ; done'
         }
     }
   }
