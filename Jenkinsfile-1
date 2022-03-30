@@ -55,7 +55,7 @@ pipeline {
         steps {
            script {
                 kubernetesDeploy(
-                    configs: './k8s/deployment.yml',
+                    configs: 'deployment.yml',
                     kubeconfigId: 'AKS_CONFIG',
                     enableConfigSubstitution: true
                 )
