@@ -22,14 +22,6 @@ variable "instance-type" {
   default     = "t2.micro"
 }
 
-variable "ubuntu-tags" {
-  type = object({
-    Name  = string
-    Apps  = string
-    Owner = string
-  })
-}
-
 variable "centos-jenkins-tags" {
   type = object({
     Name = string
@@ -67,12 +59,6 @@ variable "mroute-table-tags" {
 }
 
 variable "msubnet-tags" {
-  type = object({
-    Name = string
-  })
-}
-
-variable "allow-traffic-to-ubuntu-tags" {
   type = object({
     Name = string
   })

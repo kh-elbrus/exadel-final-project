@@ -3,6 +3,10 @@ pipeline {
     label 'agent-1'
   }
 
+  environment {
+    DOCKERHUB_CREDS = credentials('DOCKERHUB')
+  }
+
   stages {
     stage('Setupping ENV file') {
         steps{
@@ -23,7 +27,7 @@ pipeline {
     }
     stage('Build docker image') {
       steps {
-        sh 'docker-compose build -t elbrus/exadel-final-project'
+        sh 'docker-compose build -t elbrus/exadel-final-project:latest'
       }
     }
     stage('Running docker container') {
@@ -36,6 +40,21 @@ pipeline {
             sh 'sleep 20'
             sh 'curl -I https://0.0.0.0 -k'
         }
+    }
+    stage('Login to DockerHub'){
+        steps {
+            sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
+        }
+    }
+    stage('Pushing to DockerHub') {
+        steps {
+            sh 'docker push elbrus/exadel-final-project:latest'
+        }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout'
     }
   }
 }
