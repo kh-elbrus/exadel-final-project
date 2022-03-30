@@ -48,7 +48,7 @@ pipeline {
     }
     stage('Pushing to DockerHub') {
         steps {
-            sh 'docker-compose push -t elbrus/exadel-final-project'
+            sh 'docker-compose push'
         }
     }
   }
