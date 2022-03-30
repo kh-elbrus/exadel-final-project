@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Build docker image') {
       steps {
-        sh 'docker-compose build -t elbrus/exadel-final-project'
+        sh 'docker-compose build -t elbrus/exadel-final-project --pull'
       }
     }
     stage('Running docker container') {
