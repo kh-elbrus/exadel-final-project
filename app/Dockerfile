@@ -37,3 +37,5 @@ RUN chown -R wagtail:wagtail /vol/
 RUN chmod -R 755 /vol/web
 
 USER wagtail
+
+CMD ["bash", "startup.sh"]

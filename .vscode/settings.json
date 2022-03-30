@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/v1%40service": "file:///e%3A/Exadel/exadel-final-project/deployment.yml"
+    }
+}
