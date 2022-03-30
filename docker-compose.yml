@@ -4,6 +4,7 @@ services:
     web:
         restart: always
         build: ./app
+        image: elbrus/wagtail
         expose:
             - "8000"
         volumes:
@@ -27,6 +28,7 @@ services:
     nginx:
         restart: always
         build: ./nginx
+        image: nginx
         ports:
             - "80:80"
             - "443:443"
@@ -40,7 +42,8 @@ services:
             - web
     postgres:
         restart: always
-        image: postgres:latest
+        build: ./postgres
+        image: elbrus/postgres
         volumes:
             - ./db_backup:/db_backup
         env_file:
