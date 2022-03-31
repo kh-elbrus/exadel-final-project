@@ -16,11 +16,6 @@ spec:
         app: web
     spec:
       containers:
-        - name: nginx
-          image: elbrus/nginx
-          ports:
-            - containerPort: 80
-            - containerPort: 443
         - name: postgres
           image: elbrus/postgres
           ports:
@@ -67,7 +62,7 @@ spec:
                   name: pgpwd 
                   key: POSTGRES_PASSWORD
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: Service
 metadata:
   name: web
@@ -81,14 +76,6 @@ spec:
     clientIP:
       timeoutSeconds: 10800
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 80
-  - name: https
-    protocol: TCP
-    port: 443
-    targetPort: 443
   - name: db
     protocol: TCP
     port: 5432
