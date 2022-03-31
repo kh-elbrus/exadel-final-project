@@ -35,7 +35,12 @@ pipeline {
             sh 'docker-compose up -d'
         }
     }
-    stage('Testing Web App') {
+    stage('Testing Wagtail App'){
+      steps {
+        sh 'docker exec -i wagtail app/magane.py test'
+      }
+    }
+    stage('Availability') {
         steps {
             sh 'sleep 20'
             sh 'curl -I https://0.0.0.0 -k'
@@ -55,7 +60,7 @@ pipeline {
         steps {
            script {
                 kubernetesDeploy(
-                    configs: 'deployment.yml',
+                    configs: 'k8s/deployment.yml',
                     kubeconfigId: 'AKS_CONFIG',
                     enableConfigSubstitution: true
                 )
