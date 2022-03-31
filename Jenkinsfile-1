@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'kubepods'
+    label 'agent-1'
   }
 
   environment {
