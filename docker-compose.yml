@@ -2,6 +2,7 @@ version: "3"
 
 services:
     web:
+        container_name: wagtail
         restart: always
         build: ./app
         image: elbrus/wagtail
@@ -22,6 +23,7 @@ services:
         depends_on:
             - postgres
     nginx:
+        container_name: nginx
         restart: always
         build: ./nginx
         image: elbrus/nginx
@@ -37,6 +39,7 @@ services:
         depends_on:
             - web
     postgres:
+        container_name: postgres
         restart: always
         build: ./postgres
         image: elbrus/postgres
