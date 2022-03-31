@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Testing Wagtail App'){
       steps {
-        sh 'docker exec -i wagtail app/magane.py test'
+        sh 'docker exec -i wagtail python manage.py test'
       }
     }
     stage('Availability') {
