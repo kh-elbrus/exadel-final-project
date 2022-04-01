@@ -60,24 +60,13 @@ pipeline {
         steps {
            script {
                 kubernetesDeploy(
-                    configs: 'k8s/deployment.yaml',
+                    configs: 'k8s/',
                     kubeconfigId: 'AKS_CONFIG',
                     enableConfigSubstitution: true
                 )
             }
         }
     }
-    stage('Deploy cronJob to k8s') {
-      steps {
-        script {
-          kubernetesDeploy(
-            configs: 'k8s/cronJob/s3-backup.yaml',
-            kubeconfigId: 'AKS_CONFIG',
-            enableConfigSubstitution: true
-          )
-        }
-      }
-    } 
   }
   post {
     always {
