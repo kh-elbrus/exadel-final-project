@@ -14,19 +14,12 @@
 
 ---
 
-</div>
-
 ## Summary
 
 This final project applies all of the practical skills that were learned throughout the internship process. The main goal is to build the CI/CD process from scratch. This project is performed in a team of two people: `Elbrus` and `Muzaffarbek`. 
 
 
-## Rapid Access to all using resources
+📙 [Documentation || GitHub Wiki](https://github.com/kh-elbrus/exadel-final-project/wiki) 
+⚔ [Team Coordination || Github Projects](https://github.com/kh-elbrus/exadel-final-project/projects/1)
 
-👉 [Wiki | Documentation](https://github.com/kh-elbrus/exadel-final-project/wiki)
-
-👉 [Team coordination tool | Github Projects](https://github.com/kh-elbrus/exadel-final-project/projects/1)
-
-👉 [Jenkins | CI/CD](http://52.203.118.100:8080/)
-
-👉 [Grafana | Monitoring](http://3.233.17.161:3000/)
+</div>
