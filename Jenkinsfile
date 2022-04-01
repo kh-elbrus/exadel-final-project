@@ -40,7 +40,7 @@ pipeline {
         sh 'docker exec -i wagtail python manage.py test'
       }
     }
-    stage('Availability') {
+    stage('Availability test') {
         steps {
             sh 'sleep 20'
             sh 'curl -I https://0.0.0.0 -k'
@@ -56,7 +56,7 @@ pipeline {
             sh 'docker-compose push'
         }
     }
-    stage('Deploying to k8s') {
+    stage('Deploying app to k8s') {
         steps {
            script {
                 kubernetesDeploy(
@@ -67,6 +67,17 @@ pipeline {
             }
         }
     }
+    stage('Deploy cronJob to k8s') {
+      steps {
+        script {
+          kubernetesDeploy(
+            configs: 'k8s/cronJob/s3-backup.yaml',
+            kubeconfigId: 'AKS_CONFIG',
+            enableConfigSubstitution: true
+          )
+        }
+      }
+    } 
   }
   post {
     always {
