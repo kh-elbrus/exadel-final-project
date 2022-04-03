@@ -14,7 +14,7 @@
 
 ## Summary
 
-This final project applies all of the practical skills that were learned throughout the internship process. The main goal is to build the CI/CD process from scratch. This project is performed in a team of two people: `Elbrus` and `Muzaffarbek`. 
+This final project applies all of the practical skills that were taught throughout the internship process. The main goal is to build the CI/CD process from scratch. In particular, infrastructure in which it will be possible to build, deploy and test the application. As a task requirement, we followed the best practices of DevOps by containerizing our app, scheduling backups, and following security rules. This project is done by a team of two people: Elbrus and Muzaffarbek.
 
 
 📙 [Documentation - GitHub Wiki](https://github.com/kh-elbrus/exadel-final-project/wiki) 
