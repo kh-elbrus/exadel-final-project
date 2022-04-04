@@ -23,3 +23,4 @@ This final project applies all of the practical skills that were learned through
 & [Team Coordination - Github Projects](https://github.com/kh-elbrus/exadel-final-project/projects/1) ⚔
 
 </div>
+
